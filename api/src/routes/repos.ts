@@ -20,6 +20,7 @@ async function getRepoData(): Promise<Repo[]> {
   const url = 'https://api.github.com/users/silverorange/repos';
   try {
     const resp = await axios({ url, method: 'GET' });
+    console.log(resp.data);
     return resp.data;
   } catch (error) {
     if (error instanceof AxiosError) {
