@@ -1,6 +1,5 @@
 import create from 'zustand';
 import { Repo } from '../models/Repo';
-import filterRepos from '../util/filterRepos';
 
 interface ReposState {
   repos: Repo[];
