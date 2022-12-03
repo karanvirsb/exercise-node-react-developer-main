@@ -1,9 +1,10 @@
 import React from 'react';
-import Repos from '../../components/Repo';
+import Repos from '../../components/Repos';
 import useGetRepos from '../../hooks/useGetRepos';
 
 export default function Home() {
   const { repos, error, isLoading } = useGetRepos();
+  console.log(repos);
   if (isLoading) {
     return <p>...Loading</p>;
   }
@@ -17,11 +18,7 @@ export default function Home() {
       <h1>Repositories</h1>
       {/* TODO add language filter */}
       <div>
-        {repos.length > 0 ? (
-          repos.map((repo) => <Repos repo={repo}></Repos>)
-        ) : (
-          <p>No repositories found.</p>
-        )}
+        <Repos repos={repos}></Repos>
       </div>
     </div>
   );
