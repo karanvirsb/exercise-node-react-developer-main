@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Repo } from '../models/Repo';
+import useReposStore from '../store/repoStore';
 import filterRepos from '../util/filterRepos';
 import FilterByLanguages from './FilterByLanguages';
 import IndividualRepo from './IndividalRepo';
 
-type props = { repos: Repo[] };
+// type props = { repos: Repo[] };
 
-export default function Repos({ repos }: props) {
+export default function Repos() {
+  const repos = useReposStore((state) => state.repos);
   const [selectedLanguage, setSelectedLanguage] = useState('all');
   // TODO useCallback or useMemo
   const [filteredRepos, setFilteredRepos] = useState(
