@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Repo } from '../models/Repo';
+import useReposStore from '../store/repoStore';
 
 export default function useGetRepos() {
-  const [repos, setRepos] = useState<Repo[]>([]);
+  const setRepos = useReposStore((state) => state.setRepos);
   const [error, setError] = useState<Error>();
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
@@ -27,5 +28,5 @@ export default function useGetRepos() {
       });
   }, []);
 
-  return { repos, error, isLoading };
+  return { error, isLoading };
 }
