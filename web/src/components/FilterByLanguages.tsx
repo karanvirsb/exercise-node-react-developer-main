@@ -12,7 +12,11 @@ export default function FilterByLanguages({
   return (
     <div>
       {languages.map((lang) => {
-        return <button onClick={() => handleClick(lang)}>{lang}</button>;
+        return (
+          <button key={lang} onClick={() => handleClick(lang)}>
+            {lang}
+          </button>
+        );
       })}
     </div>
   );
