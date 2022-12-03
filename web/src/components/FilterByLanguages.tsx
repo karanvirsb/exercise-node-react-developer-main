@@ -1,16 +1,16 @@
 import React from 'react';
 
-type props = {
+interface IFilter {
   languages: string[];
   selectedLanguage: string;
   setSelectedLanguage: React.Dispatch<React.SetStateAction<string>>;
-};
+}
 
 export default function FilterByLanguages({
   setSelectedLanguage,
   selectedLanguage,
   languages,
-}: props) {
+}: IFilter) {
   return (
     <div>
       {languages.map((lang) => {
