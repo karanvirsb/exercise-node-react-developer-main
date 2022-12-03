@@ -1,5 +1,5 @@
 import React from 'react';
-import Repos from '../../components/Repos';
+import Repos from '../../components/Repo';
 import useGetRepos from '../../hooks/useGetRepos';
 
 export default function Home() {
