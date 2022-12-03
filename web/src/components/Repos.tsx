@@ -17,6 +17,7 @@ export default function Repos({ repos }: props) {
     <>
       <FilterByLanguages
         languages={languages}
+        selectedLanguage={selectedLanguage}
         setSelectedLanguage={setSelectedLanguage}
       ></FilterByLanguages>
 
