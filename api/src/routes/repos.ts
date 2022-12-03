@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import axios, { AxiosError } from 'axios';
 import { Repo } from '../models/Repo';
+import reposJson from '../../data/repos.json';
 
 export const repos = Router();
 
@@ -11,7 +12,7 @@ repos.get('/', async (_: Request, res: Response) => {
 
   // TODO: See README.md Task (A). Return repo data here. You’ve got this!
   const repos = await getRepoData();
-  let onlyFalseForks: Repo[] = [];
+  let onlyFalseForks: Repo[] = [...getReposWithFalseForks([...reposJson])];
   if (Array.isArray(repos)) onlyFalseForks = getReposWithFalseForks(repos);
   res.json(onlyFalseForks);
 });
@@ -20,7 +21,7 @@ async function getRepoData(): Promise<Repo[]> {
   const url = 'https://api.github.com/users/silverorange/repos';
   try {
     const resp = await axios({ url, method: 'GET' });
-    console.log(resp.data);
+
     return resp.data;
   } catch (error) {
     if (error instanceof AxiosError) {
