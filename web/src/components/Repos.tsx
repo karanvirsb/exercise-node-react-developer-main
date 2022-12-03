@@ -8,6 +8,7 @@ type props = { repos: Repo[] };
 
 export default function Repos({ repos }: props) {
   const [selectedLanguage, setSelectedLanguage] = useState('all');
+  // TODO useCallback or useMemo
   const [filteredRepos, setFilteredRepos] = useState(
     filterRepos({ repos, language: selectedLanguage })
   );
