@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import useReposStore from '../../store/repoStore';
 
-export default function repo() {
+export default function Repo() {
   const { repoId } = useParams();
   const repos = useReposStore((state) => state.repos);
   const repo = getRepo({ id: parseInt(repoId ?? '0') });
