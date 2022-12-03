@@ -9,9 +9,13 @@ export default function Repos({ repos }: props) {
   return <></>;
 }
 
-function getLanguages({ repos }: { repos: Repo[] }): Set<string> {
+function getLanguages({ repos }: { repos: Repo[] }): string[] {
   const languages: string[] = repos.map((repo) => repo.language);
   const langSet = new Set(languages);
   langSet.add('all');
-  return langSet;
+  const langArr: string[] = [];
+  langSet.forEach((value, _) => {
+    langArr.push(value);
+  });
+  return langArr;
 }
