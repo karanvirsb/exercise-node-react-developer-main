@@ -15,7 +15,7 @@ export default function IndividualRepo({ repo }: props) {
     </div>
   );
 
-  function goToRepoPage(id: string) {
+  function goToRepoPage(id: number) {
     navigate(`/repo/${id}`);
   }
 }
