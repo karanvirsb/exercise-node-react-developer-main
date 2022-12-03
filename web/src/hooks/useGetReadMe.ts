@@ -18,7 +18,7 @@ export default function useGetReadMe({ repoName }: props) {
       })
         .then((response) => {
           if (response.ok) {
-            return response.json();
+            return response.text();
           }
           throw response;
         })
