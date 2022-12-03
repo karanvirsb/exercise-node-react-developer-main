@@ -9,7 +9,10 @@ export default function repo() {
   return (
     <div>
       <Link to="/">Back to Home</Link>
-      <p></p>
+      <p>Commit Date: {repo?.updated_at}</p>
+      <p>Author: {repo?.owner}</p>
+      <p>Message: {repo?.commits_url}</p>
+      // TODO fetch read me
     </div>
   );
 
