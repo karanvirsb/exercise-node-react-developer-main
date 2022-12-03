@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Repo } from '../models/Repo';
 import filterRepos from '../util/filterRepos';
 import FilterByLanguages from './FilterByLanguages';
@@ -13,6 +13,11 @@ export default function Repos({ repos }: props) {
     filterRepos({ repos, language: selectedLanguage })
   );
   const languages = getLanguages({ repos });
+
+  useEffect(() => {
+    setFilteredRepos(filterRepos({ repos, language: selectedLanguage }));
+  }, [selectedLanguage]);
+
   return (
     <>
       <FilterByLanguages
@@ -33,10 +38,11 @@ export default function Repos({ repos }: props) {
 }
 
 function getLanguages({ repos }: { repos: Repo[] }): string[] {
-  const languages: string[] = repos.map((repo) => repo.language);
-  const langSet = new Set(languages);
+  const languages: string[] = repos.map((repo) => repo.language); // mapping and getting languages
+  const langSet = new Set(languages); // creating set to only get one language of each rather than duplicates
   langSet.add('all');
   const langArr: string[] = [];
+  // adding each language to an arr
   langSet.forEach((value, _) => {
     langArr.push(value);
   });
