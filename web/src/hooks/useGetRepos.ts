@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 type props = { url: string };
 
-function useGetRepos({ url }: props) {
+export default function useGetRepos({ url }: props) {
   const [repos, setRepos] = useState([]);
   useEffect(() => {
     async function fetchRepos() {
@@ -13,5 +13,3 @@ function useGetRepos({ url }: props) {
     fetchRepos();
   }, [url]);
 }
-
-export {};
