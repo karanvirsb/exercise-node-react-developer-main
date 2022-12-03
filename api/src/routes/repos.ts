@@ -10,8 +10,10 @@ repos.get('/', async (_: Request, res: Response) => {
   res.status(200);
 
   // TODO: See README.md Task (A). Return repo data here. You’ve got this!
-
-  res.json([]);
+  const repos = await getRepoData();
+  let onlyFalseForks: Repo[] = [];
+  if (Array.isArray(repos)) onlyFalseForks = getReposWithFalseForks(repos);
+  res.json(onlyFalseForks);
 });
 
 async function getRepoData(): Promise<Repo[]> {
@@ -25,4 +27,8 @@ async function getRepoData(): Promise<Repo[]> {
     }
   }
   return [];
+}
+
+function getReposWithFalseForks(repos: Repo[]) {
+  return repos.filter((repo) => repo.fork !== true);
 }
