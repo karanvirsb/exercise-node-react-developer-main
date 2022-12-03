@@ -4,7 +4,6 @@ import useReposStore from '../../store/repoStore';
 
 export default function Repo() {
   const { repoId } = useParams();
-  console.log(repoId);
   const repos = useReposStore((state) => state.repos);
   const repo = getRepo({ id: parseInt(repoId ?? '0') });
   return (
