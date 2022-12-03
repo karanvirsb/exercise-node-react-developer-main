@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Repo } from '../models/Repo';
+import filterRepos from '../util/filterRepos';
 import FilterByLanguages from './FilterByLanguages';
 import IndividualRepo from './IndividalRepo';
 
@@ -7,6 +8,9 @@ type props = { repos: Repo[] };
 
 export default function Repos({ repos }: props) {
   const [selectedLanguage, setSelectedLanguage] = useState('all');
+  const [filteredRepos, setFilteredRepos] = useState(
+    filterRepos({ repos, language: selectedLanguage })
+  );
   const languages = getLanguages({ repos });
   return (
     <>
@@ -15,8 +19,10 @@ export default function Repos({ repos }: props) {
         setSelectedLanguage={setSelectedLanguage}
       ></FilterByLanguages>
 
-      {repos.length > 0 ? (
-        repos.map((repo) => <IndividualRepo repo={repo}></IndividualRepo>)
+      {filteredRepos.length > 0 ? (
+        filteredRepos.map((repo) => (
+          <IndividualRepo repo={repo}></IndividualRepo>
+        ))
       ) : (
         <p>No repositories found.</p>
       )}
