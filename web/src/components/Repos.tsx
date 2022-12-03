@@ -18,7 +18,7 @@ export default function Repos() {
 
   useEffect(() => {
     setFilteredRepos(filterRepos({ repos, language: selectedLanguage }));
-  }, [selectedLanguage]);
+  }, [selectedLanguage, repos]);
 
   return (
     <>
