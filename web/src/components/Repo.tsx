@@ -3,7 +3,7 @@ import { Repo } from '../models/Repo';
 
 type props = { repo: Repo };
 
-export default function Repos({ repo }: props) {
+export default function Repo({ repo }: props) {
   return (
     <div>
       <h3>{repo.name}</h3>
