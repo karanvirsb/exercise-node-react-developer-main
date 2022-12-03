@@ -28,7 +28,7 @@ export default function Repos({ repos }: props) {
 
       {filteredRepos.length > 0 ? (
         filteredRepos.map((repo) => (
-          <IndividualRepo repo={repo}></IndividualRepo>
+          <IndividualRepo key={repo.id} repo={repo}></IndividualRepo>
         ))
       ) : (
         <p>No repositories found.</p>
