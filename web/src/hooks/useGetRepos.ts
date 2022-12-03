@@ -6,7 +6,7 @@ export default function useGetRepos() {
   const [error, setError] = useState<Error>();
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    fetch('http:localhost:4000/repos', {
+    fetch('http://localhost:4000/repos', {
       method: 'GET',
     })
       .then((response) => {
