@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Repo } from '../models/Repo';
 import useReposStore from '../store/repoStore';
 import filterRepos from '../util/filterRepos';
@@ -10,15 +10,19 @@ import IndividualRepo from './IndividalRepo';
 export default function Repos() {
   const repos = useReposStore((state) => state.repos);
   const [selectedLanguage, setSelectedLanguage] = useState('all');
-  // TODO useCallback or useMemo
-  const [filteredRepos, setFilteredRepos] = useState(
-    filterRepos({ repos, language: selectedLanguage })
+
+  const filteredRepos = useCallback(
+    (language) => filterRepos({ repos, language }),
+    [repos, selectedLanguage]
   );
+  // const [filteredRepos, setFilteredRepos] = useState(
+  //   filterRepos({ repos, language: selectedLanguage })
+  // );
   const languages = getLanguages({ repos });
 
-  useEffect(() => {
-    setFilteredRepos(filterRepos({ repos, language: selectedLanguage }));
-  }, [selectedLanguage, repos]);
+  // useEffect(() => {
+  //   setFilteredRepos();
+  // }, [selectedLanguage, repos]);
 
   return (
     <>
@@ -29,7 +33,7 @@ export default function Repos() {
       ></FilterByLanguages>
 
       {filteredRepos.length > 0 ? (
-        filteredRepos.map((repo) => (
+        filteredRepos(selectedLanguage).map((repo) => (
           <IndividualRepo key={repo.id} repo={repo}></IndividualRepo>
         ))
       ) : (
