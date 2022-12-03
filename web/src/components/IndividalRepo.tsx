@@ -7,7 +7,7 @@ type props = { repo: Repo };
 export default function IndividualRepo({ repo }: props) {
   const navigate = useNavigate();
   return (
-    <div>
+    <div onClick={() => goToRepoPage(repo.id)}>
       <h3>{repo.name}</h3>
       <p>{repo.description}</p>
       <p>Language: {repo.language}</p>
