@@ -3,8 +3,8 @@ import Repos from '../../components/Repos';
 import useGetRepos from '../../hooks/useGetRepos';
 
 export default function Home() {
-  const { repos, error, isLoading } = useGetRepos();
-  console.log(repos);
+  const { error, isLoading } = useGetRepos();
+
   if (isLoading) {
     return <p>...Loading</p>;
   }
@@ -18,7 +18,7 @@ export default function Home() {
       <h1>Repositories</h1>
       {/* TODO add language filter */}
       <div>
-        <Repos repos={repos}></Repos>
+        <Repos></Repos>
       </div>
     </div>
   );
