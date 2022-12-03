@@ -5,6 +5,8 @@ import filterRepos from '../util/filterRepos';
 interface ReposState {
   repos: Repo[];
   filteredRepos: Repo[];
+  setRepos: (repos: Repo[]) => void;
+  filterRepos: (language: string) => void;
 }
 
 const useReposStore = create<ReposState>((set) => ({
@@ -16,3 +18,5 @@ const useReposStore = create<ReposState>((set) => ({
       filteredRepos: filterRepos({ repos: state.repos, language }),
     })),
 }));
+
+export default useReposStore;
