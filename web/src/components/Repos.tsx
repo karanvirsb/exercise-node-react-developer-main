@@ -8,8 +8,8 @@ export default function Repos({ repo }: props) {
     <div>
       <h3>{repo.name}</h3>
       <p>{repo.description}</p>
-      <p>{repo.language}</p>
-      <p>{repo.forks_count}</p>
+      <p>Language: {repo.language}</p>
+      <p>Fork Count: {repo.forks_count}</p>
     </div>
   );
 }
