@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Repo } from '../models/Repo';
 import useReposStore from '../store/repoStore';
 import filterRepos from '../util/filterRepos';
