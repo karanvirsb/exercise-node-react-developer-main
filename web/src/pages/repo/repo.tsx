@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
+import useGetCommits from '../../hooks/useGetCommits';
 import useGetReadMe from '../../hooks/useGetReadMe';
 import useReposStore from '../../store/repoStore';
 
@@ -10,6 +11,12 @@ export default function Repo() {
   const { readMe, error, isLoading } = useGetReadMe({
     repoName: repo?.full_name,
   });
+  const {
+    commits,
+    error: commitError,
+    isLoading: areCommitsLoading,
+  } = useGetCommits({ repoName: repo?.full_name });
+  console.log(commits);
   return (
     <div>
       <Link to="/">Back to Home</Link>
