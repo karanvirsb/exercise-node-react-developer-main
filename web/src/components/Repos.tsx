@@ -13,7 +13,7 @@ export default function Repos() {
 
   const filteredRepos = useCallback(
     (language) => filterRepos({ repos, language }),
-    [repos, selectedLanguage]
+    [repos]
   );
   // const [filteredRepos, setFilteredRepos] = useState(
   //   filterRepos({ repos, language: selectedLanguage })
