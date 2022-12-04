@@ -5,6 +5,7 @@ import useGetReadMe from '../../hooks/useGetReadMe';
 import useReposStore from '../../store/repoStore';
 
 export default function Repo() {
+  // TODO fetch repo
   const { repoId } = useParams();
   const repos = useReposStore((state) => state.repos);
   const repo = getRepo({ id: parseInt(repoId ?? '0') });
