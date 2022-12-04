@@ -13,7 +13,7 @@ export default function useGetCommits({ repoName }: props) {
   useEffect(() => {
     if (repoName) {
       //api.github.com/repos/silverorange/Castanet/commits
-      https: fetch(`api.github.com/${repoName}/commits`, {
+      https: fetch(`https://api.github.com/repos/${repoName}/commits`, {
         method: 'GET',
       })
         .then((response) => {
