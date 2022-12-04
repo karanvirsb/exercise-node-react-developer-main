@@ -16,13 +16,17 @@ export default function Repo() {
     error: commitError,
     isLoading: areCommitsLoading,
   } = useGetCommits({ repoName: repo?.full_name });
-  console.log(commits);
+
+  if (areCommitsLoading) return <p>...Loading</p>;
+  if (commitError)
+    return <p>An error has occurred while fetching for commits.</p>;
+
   return (
     <div>
       <Link to="/">Back to Home</Link>
-      <p>Commit Date: {repo?.updated_at ?? 'Not available'}</p>
-      <p>Author: {repo?.owner.login ?? 'Not available'}</p>
-      <p>Message: {repo?.commits_url ?? 'Not available'}</p>
+      <p>Commit Date: {commits[0].commit.author.date ?? 'Not available'}</p>
+      <p>Author: {commits[0].commit.author.name ?? 'Not available'}</p>
+      <p>Message: {commits[0].commit.message ?? 'Not available'}</p>
       <div>
         <h1>Read Me</h1>
         <p>
