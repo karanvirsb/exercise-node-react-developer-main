@@ -2,9 +2,11 @@ import React from 'react';
 import { Repo } from '../models/Repo';
 import { useNavigate } from 'react-router-dom';
 
-type props = { repo: Repo };
+interface IIndividualRepo {
+  repo: Repo;
+}
 
-export default function IndividualRepo({ repo }: props) {
+export default function IndividualRepo({ repo }: IIndividualRepo) {
   const navigate = useNavigate();
   return (
     <div onClick={() => goToRepoPage(repo.id)}>
